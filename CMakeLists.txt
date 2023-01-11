@@ -7,7 +7,6 @@ set(CMAKE_CXX_FLAGS  "-Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Werro
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
 find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
@@ -26,7 +25,12 @@ set(SOURCES
     src/backends/imgui_impl_sdl.cpp
 )
 
+if(STATIC)
 add_library(minimal-imgui ${SOURCES})
+else() 
+add_library(minimal-imgui SHARED ${SOURCES})
+endif()
+
 target_link_libraries(minimal-imgui PRIVATE
     SDL2::SDL2
     GLEW::glew
