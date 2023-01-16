@@ -33,6 +33,6 @@ endif()
 
 target_link_libraries(minimal-imgui PRIVATE
     SDL2::SDL2
-    GLEW::glew
-    ${OPENGL_LIBRARIES} ${GLUT_LIBRARY}
+    ${OPENGL_LIBRARIES}
+    ${GLUT_LIBRARY}
     )
